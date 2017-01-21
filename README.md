@@ -17,3 +17,5 @@ Currently contains a single activity, a Metronome app, that allows scanning for 
 - Refactor Metronome app to use the background service
 - Write a webpage that will use JS socket API to control toys
 - Test it continues to robustly operate in the background
+
+![Screenshot](metronome.jpg)

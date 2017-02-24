@@ -15,7 +15,11 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.ParcelUuid;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
+import java.io.InterruptedIOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -34,6 +38,7 @@ public class ToyManagerService extends Service {
     private BluetoothLeScanner bluetoothScanner;
     private ScanCallback scanCallback;
     private boolean scanning;
+    private ListenerThread listenerThread;
 
     public static final String TOYS_MANAGER_PREFS = "ToyManager";
     private LinkedHashMap<String, LovenseToy> knownToys = new LinkedHashMap<String, LovenseToy>();
@@ -85,11 +90,35 @@ public class ToyManagerService extends Service {
                 toy.connect();
             }
         }
+
+        // start listening on UDP in a background thread
+        listenerThread = new ListenerThread(this);
+        listenerThread.start();
+    }
+
+    // called from UDP listener TODO make a unified public interface to control toys on this service
+    // and get Android activities and UDP clients to use it, allow addressing toy by class/id etc
+    void handleMessage(String message) {
+        String[] parts = message.split(":");
+        for (LovenseToy toy : knownToys.values()) {
+            if ("*".equals(parts[0]) || toy.getName().equals(parts[0])) {
+                for (ToyManagerCallback observer : observers) {
+                    observer.log(toy, "got UDP " + message);
+                }
+                if ("vibrate".equals(parts[1])) {
+                    toy.vibrate(Integer.parseInt(parts[2]) / 5); // TODO toys should all use 0..100
+                }
+            }
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+
+        // close the UDP listener thread
+        listenerThread.active = false;
+        listenerThread.interrupt();
 
         // cancel any scans in progress
         stopScan();

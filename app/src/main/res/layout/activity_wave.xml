@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_wave"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="org.hissylizard.vibr8.WaveActivity">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waveType1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:layout_toStartOf="@+id/toggle1" />
+
+    <ToggleButton
+        android:text="ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggle1"
+        android:layout_alignTop="@+id/waveType1"
+        android:layout_marginTop="-12dp"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frequencyText1"
+        android:layout_below="@+id/waveType1"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frequencyBar1"
+        android:layout_alignTop="@+id/frequencyText1"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/frequencyText1" />
+
+    <TextView
+        android:text="Amplitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amplitudeText1"
+        android:layout_below="@+id/frequencyText1"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amplitudeBar1"
+        android:layout_alignTop="@+id/amplitudeText1"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/amplitudeText1" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waveType2"
+        android:layout_alignTop="@+id/amplitudeText1"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:layout_toStartOf="@+id/toggle2" />
+
+    <ToggleButton
+        android:text="ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggle2"
+        android:layout_alignTop="@+id/waveType2"
+        android:layout_marginTop="-12dp"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frequencyText2"
+        android:layout_below="@+id/waveType2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frequencyBar2"
+        android:layout_alignTop="@+id/frequencyText2"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/frequencyText2" />
+
+    <TextView
+        android:text="Amplitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amplitudeText2"
+        android:layout_below="@+id/frequencyText2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amplitudeBar2"
+        android:layout_alignTop="@+id/amplitudeText2"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/amplitudeText2" />
+
+
+
+
+</RelativeLayout>
